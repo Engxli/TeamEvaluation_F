@@ -1,0 +1,40 @@
+import React from "react";
+import HomeContentItem from "./HomeContentItem";
+
+const HomeContent = ({ semesters }) => {
+  const semesterList =
+    semesters && semesters.length != 0 ? (
+      semesters.map((semester) => (
+        <HomeContentItem semester={semester} key={semester.id} />
+      ))
+    ) : (
+      <p> No semesters yet</p>
+    );
+
+  return (
+    <div className="col-lg-8">
+      <div className="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4">
+        <div className="py-2 p-md-3">
+          {/* <!-- Title + ADD NEW ITEM--> */}
+          <div className="d-sm-flex align-items-center justify-content-between pb-2">
+            <h1 className="h3 mb-3 text-center text-sm-start">Semesters</h1>
+            <div className="d-flex align-items-center mb-3">
+              <button className="btn btn-outline-primary btn-sm">
+                ADD SEMESTER
+              </button>
+            </div>
+          </div>
+          {/* <!-- Accordion with orders--> */}
+          {/* <!-- Basic accordion --> */}
+          <div className="accordion" id="accordionExample">
+            {/* <!-- Item --> */}
+            {semesterList}
+          </div>
+          {/* end */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HomeContent;
