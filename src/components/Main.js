@@ -2,7 +2,7 @@ import React from "react";
 import Auth from "./auth/Auth";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
+import Home from "./home/Home";
 
 const Main = () => {
   return (
