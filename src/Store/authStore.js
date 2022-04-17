@@ -3,6 +3,9 @@ import { instance } from "./instance";
 
 class AuthStore {
   user = null;
+  signinError = false;
+  signupError = false;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -17,28 +20,32 @@ class AuthStore {
     this.user = null;
   };
 
-  signup = async (userData) => {
+  signup = async (userData, navigate) => {
     try {
-      // user = { username: "Ali Ahmad", password: "123KDD"}
       await instance.post("/api/users/", userData);
-      await this.signin(userData);
+      await this.signin(userData, navigate);
+      this.signupError = false;
       //   console.log(res.data);
     } catch (error) {
-      console.log(error);
+      // const err = error as axios.
+      //   console.log(error.response);
+      this.signupError = error.response;
     }
   };
 
-  signin = async (userData) => {
+  signin = async (userData, navigate) => {
     try {
-      // user = { username: "Ali Ahmad", password: "123KDD"}
       const res = await instance.post("/api/jwt/create/", userData);
       //   console.log(res.data);
       this.setUser(res.data.access);
       const res2 = await instance.get("/api/users/me/");
       //   console.log(res2.data);
       this.user = res2.data;
+      this.signinError = false;
+      navigate("/home");
     } catch (error) {
-      console.log(error);
+      //   console.log(error.response);
+      this.signinError = error.response;
     }
   };
 

@@ -1,8 +1,10 @@
 import { observer } from "mobx-react";
 import React from "react";
 import authStore from "../Store/authStore";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light navbar-shadow">
       <div className="container px-0 px-xl-3" style={{ position: "relative" }}>
@@ -33,7 +35,10 @@ const Navbar = () => {
               >
                 <li>
                   <div
-                    onClick={authStore.unSetUser}
+                    onClick={() => {
+                      authStore.unSetUser();
+                      navigate("/signin");
+                    }}
                     className="dropdown-item d-flex align-items-center"
                   >
                     <i className="ai-log-out fs-base opacity-60 me-2"></i>

@@ -1,4 +1,6 @@
+import { observer } from "mobx-react";
 import React from "react";
+import authStore from "../../Store/authStore";
 
 const SigninPage = ({ toglleSignType, storeInput, sumbitButton }) => {
   const storeUserInput = (event) => {
@@ -32,7 +34,9 @@ const SigninPage = ({ toglleSignType, storeInput, sumbitButton }) => {
             ></input>
           </div>
         </div>
-
+        <p style={{ color: "red" }}>
+          {authStore.signinError ? authStore.signinError.data.detail : false}
+        </p>
         <button className="btn btn-primary d-block w-100" type="submit">
           Sign in
         </button>
@@ -51,4 +55,4 @@ const SigninPage = ({ toglleSignType, storeInput, sumbitButton }) => {
   );
 };
 
-export default SigninPage;
+export default observer(SigninPage);
