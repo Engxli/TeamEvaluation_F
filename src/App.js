@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Main from "./components/Main";
+import "./style/css/theme.min.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Main />
+      <script src="ui_js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="ui_js/vendor/simplebar/dist/simplebar.min.js"></script>
+      <script src="ui_js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+      <script src="ui_js/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+      <script src="ui_js/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+      <script src="ui_js/vendor/shufflejs/dist/shuffle.min.js"></script>
+      <script src="ui_js/vendor/parallax-js/dist/parallax.min.js"></script>
+      <script src="ui_js/js/theme.min.js"></script>
     </div>
   );
 }
