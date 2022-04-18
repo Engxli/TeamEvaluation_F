@@ -13,6 +13,7 @@ const Home = () => {
 
   //   if not logged in navigate to signin
   useEffect(() => {
+    console.log(authStore.user);
     !authStore.user && navigate("/signin");
   });
 
