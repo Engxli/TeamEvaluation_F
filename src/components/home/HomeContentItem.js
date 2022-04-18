@@ -8,16 +8,16 @@ const HomeContentItem = ({ semester }) => {
           className="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target={"#" + semester.name.split(" ")[0] + semester.id}
+          data-bs-target={"#h" + semester.id}
           aria-expanded="false"
-          aria-controls={semester.name.split(" ")[0] + semester.id}
+          aria-controls={"h" + semester.id}
         >
           {semester.name}
         </button>
       </h2>
       <div
-        className="accordion-collapse collapse"
-        id={semester.name.split(" ")[0] + semester.id}
+        className="accordion-collapse collapse "
+        id={"h" + semester.id}
         aria-labelledby={semester.id}
         data-bs-parent="#accordionExample"
       >

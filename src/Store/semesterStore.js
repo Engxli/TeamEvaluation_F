@@ -14,6 +14,19 @@ class SemesterStore {
       //   console.log(res.data);
       this.semester = res.data;
     } catch (error) {
+      //   alert(error.response.data);
+
+      console.log(error.response);
+    }
+  };
+
+  add_semester = async (data) => {
+    try {
+      const res = await instance.post("api/semester/", data);
+      //   console.log(res.data);
+      this.semester.push(res.data);
+    } catch (error) {
+      alert(error.response.data.name);
       console.log(error.response);
     }
   };

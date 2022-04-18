@@ -6,7 +6,7 @@ import "./ui_js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Main />
       {/* <script src="./ui_js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <script src="./ui_js/vendor/simplebar/dist/simplebar.min.js"></script>
