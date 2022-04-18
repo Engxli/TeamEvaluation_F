@@ -42,7 +42,7 @@ class AuthStore {
       //   console.log(res2.data);
       this.user = res2.data;
       this.signinError = false;
-      navigate("/home");
+      navigate("/semesters");
     } catch (error) {
       //   console.log(error.response);
       this.signinError = error.response;
