@@ -3,12 +3,10 @@ import Main from "./components/Main";
 import "./style/css/theme.min.css";
 import "./ui_js/vendor/simplebar/dist/simplebar.min.css";
 import "./ui_js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js";
-import Modal from "./components/modal/Modal";
 
 function App() {
   return (
     <div className="">
-      <Modal />
       <Main />
       {/* <script src="./ui_js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <script src="./ui_js/vendor/simplebar/dist/simplebar.min.js"></script>
