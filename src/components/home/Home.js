@@ -24,6 +24,7 @@ const Home = () => {
     >
       <div className="row">
         {/* here add the side bar */}
+
         <HomeSideBar />
 
         <HomeContent semesters={semesterStore.semester} />

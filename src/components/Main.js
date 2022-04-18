@@ -14,7 +14,7 @@ const Main = () => {
         <Route exact path="/" element={<Auth type={true} />} />
         <Route path="/signin" element={<Auth type={true} />} />
         <Route path="/signup" element={<Auth type={false} />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/semesters" element={<Home />} />
       </Routes>
     </div>
   );

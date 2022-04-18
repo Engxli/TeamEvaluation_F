@@ -11,7 +11,12 @@ const HomeAddContentItem = ({ handleAddSumbit, handleInput }) => {
             marginBottom: "5px",
           }}
         >
-          <form onSubmit={() => handleAddSumbit(true)}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleAddSumbit(true);
+            }}
+          >
             <input
               name="name"
               className="form-control"
@@ -29,7 +34,6 @@ const HomeAddContentItem = ({ handleAddSumbit, handleInput }) => {
               <button
                 className="btn btn-translucent-success"
                 style={{ marginRight: "10px", padding: "5px" }}
-                onClick={() => handleAddSumbit(true)}
                 type="submit"
               >
                 SAVE
