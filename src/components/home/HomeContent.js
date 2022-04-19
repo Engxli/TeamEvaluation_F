@@ -62,15 +62,6 @@ const HomeContent = ({ semesters }) => {
               />
             )}
             {semesterList}
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              // href="modal2"
-              data-bs-toggle="modal"
-              data-bs-target="#modal_l"
-            >
-              Vertically centered modal
-            </button>
           </div>
           {/* end */}
         </div>
