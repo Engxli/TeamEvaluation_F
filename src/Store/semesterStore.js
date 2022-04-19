@@ -30,6 +30,14 @@ class SemesterStore {
       console.log(error.response);
     }
   };
+
+  add_project_to_semester_local = (semesterId, project) => {
+    const theSemester = this.semester.find(
+      (semester) => semester.id === semesterId
+    );
+    theSemester.project.push(project);
+    console.log(this.semester);
+  };
 }
 
 const semesterStore = new SemesterStore();

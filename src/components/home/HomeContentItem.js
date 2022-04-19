@@ -1,6 +1,31 @@
-import React from "react";
+import { observer } from "mobx-react";
+import React, { useState } from "react";
+import projectStore from "../../Store/projectStore";
+import semesterStore from "../../Store/semesterStore";
+import ProjectAddModal from "./addModels/ProjectAddModal";
 
 const HomeContentItem = ({ semester }) => {
+  const [showAddProject, setShowAddProject] = useState(false);
+
+  const [projectAddData, setProjectAddData] = useState({});
+
+  const hadleProjectData = (e) => {
+    setProjectAddData({ ...projectAddData, [e.target.name]: e.target.value });
+  };
+  const toggleAddProject = () => {
+    setShowAddProject(!showAddProject);
+  };
+
+  const handleAddProject = (e) => {
+    e.preventDefault();
+    const data = { ...projectAddData, semester: semester.id };
+    projectStore.add_project(data);
+    toggleAddProject();
+  };
+
+  const projectList = semesterStore.semester
+    .find((semester_) => semester_.id === semester.id)
+    .project.map((project) => <p key={project.id}>{project.name}</p>);
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id={semester.id}>
@@ -22,13 +47,39 @@ const HomeContentItem = ({ semester }) => {
         data-bs-parent="#accordionExample"
       >
         <div className="accordion-body">
-          <p> PROJECT 1 - TEAM A, TEAM B</p>
-          <p> PROJECT 2 - No teams yet!</p>
-          <p> PROJECT 3 - TEAM A, TEAM B, TEAM C</p>
+          <hr />
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h6>Projects</h6>
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={toggleAddProject}
+            >
+              Add Project
+            </button>
+          </div>
+          <hr />
+          {showAddProject && (
+            <ProjectAddModal
+              toggleAddProject={toggleAddProject}
+              hadleProjectData={hadleProjectData}
+              handleAddProject={handleAddProject}
+            />
+          )}
+
+          {/* project list */}
+          {projectList.length === 0 ? <p>No projects yet!</p> : projectList}
         </div>
       </div>
     </div>
   );
 };
 
-export default HomeContentItem;
+export default observer(HomeContentItem);
