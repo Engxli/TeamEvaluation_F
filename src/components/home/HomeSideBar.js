@@ -1,15 +1,17 @@
+import { observer } from "mobx-react";
 import React from "react";
 import authStore from "../../Store/authStore";
 
 const HomeSideBar = () => {
+  const user = authStore.user ? authStore.user : "";
   return (
     <div className="col-lg-4 mb-4 mb-lg-0">
       <div className="bg-light rounded-3 shadow-lg">
         <div className="px-4 py-4 mb-1 text-center">
           <h6 className="mb-0 pt-1">
-            {authStore.user.first_name} {authStore.user.last_name}
+            {user.first_name} {user.last_name}
           </h6>
-          <span className="text-muted fs-sm">@{authStore.user.username}</span>
+          <span className="text-muted fs-sm">@{user.username}</span>
         </div>
         <div className="d-lg-none px-4 pb-4 text-center">
           <a
@@ -47,4 +49,4 @@ const HomeSideBar = () => {
   );
 };
 
-export default HomeSideBar;
+export default observer(HomeSideBar);

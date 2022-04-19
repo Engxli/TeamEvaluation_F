@@ -25,7 +25,7 @@ const HomeContent = ({ semesters }) => {
 
   const handleAddSumbit = (type) => {
     // "#modal_l".modal("show");
-    console.log(document.getElementById("modal_l"));
+    // console.log(document.getElementById("modal_l"));
     type && semesterStore.add_semester(semesterInput);
 
     showAddSemester();
@@ -47,7 +47,7 @@ const HomeContent = ({ semesters }) => {
                 className="btn btn-outline-primary btn-sm"
                 onClick={showAddSemester}
               >
-                ADD SEMESTER
+                Add semester
               </button>
             </div>
           </div>
