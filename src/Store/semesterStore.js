@@ -36,7 +36,16 @@ class SemesterStore {
       (semester) => semester.id === semesterId
     );
     theSemester.project.push(project);
-    console.log(this.semester);
+  };
+
+  add_team_to_semester_local = (semesterId, projectId, team) => {
+    const theSemester = this.semester.find((semester) => {
+      return semester.id === semesterId;
+    });
+    const theProject = theSemester.project.find(
+      (project) => project.id === projectId
+    );
+    theProject.team ? theProject.team.push(team) : (theProject.team = team);
   };
 }
 

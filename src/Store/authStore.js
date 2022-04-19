@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
+import projectStore from "./projectStore";
+import semesterStore from "./semesterStore";
 
 class AuthStore {
   user = null;
@@ -42,6 +44,8 @@ class AuthStore {
       //   console.log(res2.data);
       this.user = res2.data;
       this.signinError = false;
+      await semesterStore.fecth_semesters();
+      await projectStore.fecth_projects();
       navigate("/semesters");
     } catch (error) {
       //   console.log(error.response);

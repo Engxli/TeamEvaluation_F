@@ -47,6 +47,7 @@ const ProjectAddModal = ({
             className="btn btn-link"
             style={{ padding: "5px" }}
             onClick={toggleAddProject}
+            type="button"
           >
             CANCEL
           </button>

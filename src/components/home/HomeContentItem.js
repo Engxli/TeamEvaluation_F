@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import projectStore from "../../Store/projectStore";
 import semesterStore from "../../Store/semesterStore";
 import ProjectAddModal from "./addModels/ProjectAddModal";
+import TeamAddModal from "./addModels/TeamAddModal";
 
 const HomeContentItem = ({ semester }) => {
   const [showAddProject, setShowAddProject] = useState(false);
@@ -23,9 +24,43 @@ const HomeContentItem = ({ semester }) => {
     toggleAddProject();
   };
 
+  let teamList = [];
+  semesterStore.semester
+    .find((semester_) => semester_.id === semester.id)
+    .project.map((project, index) => {
+      return project.team;
+    })
+    .map((teams) => {
+      return teams.map((team) => team.name);
+    })
+    .forEach((names, index) => {
+      teamList.push("");
+      names.forEach((name) => (teamList[index] += name + ", "));
+      // teamList.push(name + " ");
+    });
+
+  // console.log(teamList);
+
   const projectList = semesterStore.semester
     .find((semester_) => semester_.id === semester.id)
-    .project.map((project) => <p key={project.id}>{project.name}</p>);
+    .project.map((project, index) => (
+      <div key={project.id}>
+        <p
+          key={"q2" + project.id}
+          className="project_of_semester"
+          onClick={() => console.log("clicked")}
+        >
+          {index + 1}) {project.name} -{" "}
+          {teamList[index] === "" ? "No teams yet!" : teamList[index]}
+        </p>
+        <TeamAddModal
+          key={"q" + project.id}
+          project={project}
+          semester={semester}
+        />
+        <hr />
+      </div>
+    ));
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id={semester.id}>
