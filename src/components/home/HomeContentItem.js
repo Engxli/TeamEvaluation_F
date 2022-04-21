@@ -45,12 +45,11 @@ const HomeContentItem = ({ semester }) => {
     .find((semester_) => semester_.id === semester.id)
     .project.map((project, index) => (
       <div key={project.id}>
-        <p
-          key={"q2" + project.id}
-          className="project_of_semester"
-          onClick={() => console.log("clicked")}
-        >
-          {index + 1}) {project.name} -{" "}
+        <h6>
+          {index + 1}) {project.name}:
+        </h6>
+        <p key={"q2" + project.id}>
+          {" "}
           {teamList[index] === "" ? "No teams yet!" : teamList[index]}
         </p>
         <TeamAddModal

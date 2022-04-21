@@ -18,7 +18,7 @@ const Auth = ({ type }) => {
 
   //   if logged in navigate to home
   useEffect(() => {
-    authStore.user ? navigate("/semesters") : console.log("not user");
+    authStore.user && navigate("/semesters");
   });
 
   // keep the input values inside this object

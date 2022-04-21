@@ -18,7 +18,7 @@ const TeamAddModal = ({ project, semester }) => {
     // , project: project.id
     let data = { ...teamAddData };
     console.log(project);
-    data = data.name
+    data = data.name //teama, teamb, teamc,, ,, ,, ,
       .replace(/\s/g, "")
       .split(",")
       .filter((name) => name !== "")
