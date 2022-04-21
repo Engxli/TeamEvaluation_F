@@ -45,7 +45,6 @@ class AuthStore {
       this.user = res2.data;
       this.signinError = false;
       await semesterStore.fecth_semesters();
-      await projectStore.fecth_projects();
       navigate("/semesters");
     } catch (error) {
       //   console.log(error.response);
@@ -61,6 +60,7 @@ class AuthStore {
         this.setUser(token);
         const res2 = await instance.get("/api/users/me/");
         this.user = res2.data;
+        await semesterStore.fecth_semesters();
         // console.log(res2.data);
       } catch (error) {
         // console.log(error);

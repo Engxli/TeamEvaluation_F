@@ -50,5 +50,4 @@ class SemesterStore {
 }
 
 const semesterStore = new SemesterStore();
-semesterStore.fecth_semesters();
 export default semesterStore;

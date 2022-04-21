@@ -23,6 +23,7 @@ const HomeAddContentItem = ({ handleAddSumbit, handleInput }) => {
               type="text"
               placeholder="Enter semester name"
               onChange={handleInput}
+              autoComplete="false"
               style={{
                 marginLeft: "10px",
                 width: "75%",
