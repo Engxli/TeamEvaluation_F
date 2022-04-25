@@ -4,11 +4,13 @@ import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./home/Home";
 import Report from "./report/Report";
+import ShareLinkModal from "./report/ShareLinkModal";
 
 const Main = () => {
   return (
     <div>
       {/* <!-- Page content--> */}
+      <ShareLinkModal />
       <Navbar />
       {/* MAIN PAGE */}
       <Routes>

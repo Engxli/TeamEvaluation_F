@@ -1,5 +1,7 @@
+import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import evaluationStore from "../../Store/evaluationStore";
 
 const ReportDetial = ({ project, teamId, semester }) => {
   const teamList = project.team ? (
@@ -33,8 +35,8 @@ const ReportDetial = ({ project, teamId, semester }) => {
         <tr key={criteria.criteria_id}>
           <th scope="row">{index + 1}</th>
           <td>{criteria.criteria_name}</td>
-          <td>{criteria.avg}</td>
-          <td>{criteria.criteria_name}</td>
+          <td>{criteria.avg} %</td>
+          <td>{criteria.criteria_weight}</td>
           <td>{criteria.avg_weight}</td>
         </tr>
       );
@@ -74,8 +76,11 @@ const ReportDetial = ({ project, teamId, semester }) => {
                 style={{ marginRight: "10px" }}
                 onClick={() => {
                   handleShow("share");
+                  evaluationStore.getLink(project);
                   navigator.clipboard.writeText(evaluation.id);
                 }}
+                data-bs-toggle="modal"
+                data-bs-target="#modal1"
               >
                 Share <i className="ai-share-2"></i>
               </button>
@@ -159,4 +164,4 @@ const ReportDetial = ({ project, teamId, semester }) => {
   );
 };
 
-export default ReportDetial;
+export default observer(ReportDetial);
