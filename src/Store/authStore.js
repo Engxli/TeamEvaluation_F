@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
-import projectStore from "./projectStore";
 import semesterStore from "./semesterStore";
 
 class AuthStore {
