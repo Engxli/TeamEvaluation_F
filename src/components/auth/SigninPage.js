@@ -11,7 +11,7 @@ const SigninPage = ({ toglleSignType, storeInput, sumbitButton }) => {
       <h1 className="h2 text-center">Sign in</h1>
       <form className="needs-validation" onSubmit={sumbitButton}>
         <div className="input-group mb-3">
-          <i className="ai-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+          <i className="ai-user position-absolute top-50 start-0 translate-middle-y ms-3"></i>
           <input
             name="username"
             className="form-control rounded"
