@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import teamStore from "../../../Store/teamStore";
 
+import { useNavigate } from "react-router-dom";
+
 const TeamAddModal = ({ project, semester }) => {
+  let navigate = useNavigate();
+
   const [showAddTeam, setShowAddTeam] = useState(false);
 
   const [teamAddData, setTeamAddData] = useState({});
@@ -46,7 +50,7 @@ const TeamAddModal = ({ project, semester }) => {
         <button
           style={{ marginLeft: "5px" }}
           className="btn btn-outline-secondary btn-sm"
-          onClick={() => console.log("clicked")}
+          onClick={() => navigate(`../report/${semester.id}/${project.id}`)}
         >
           View project
         </button>
