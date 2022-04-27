@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./home/Home";
 import Report from "./report/Report";
 import ShareLinkModal from "./report/ShareLinkModal";
+import Judge from "./judge/Judge";
 
 const Main = () => {
   return (
@@ -22,6 +23,14 @@ const Main = () => {
         <Route
           path="/report/:semesterId/:projectId/:teamId"
           element={<Report />}
+        />
+        <Route
+          path="/evaluate/:evaluationId/:semesterId/:projectId/"
+          element={<Judge />}
+        />
+        <Route
+          path="/evaluate/:evaluationId/:semesterId/:projectId/:judgeId"
+          element={<Judge />}
         />
       </Routes>
     </div>

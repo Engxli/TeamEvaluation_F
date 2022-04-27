@@ -51,10 +51,29 @@ const ReportDetial = ({ project, teamId, semester }) => {
     </tr>
   );
 
-  const [show, setShow] = useState("none");
+  const notes = data.notes
+    ? data.notes.map((note, index) => {
+        return note.note ? (
+          <blockquote key={note.judge_id} className="blockquote">
+            <p>{note.note}</p>
+            <footer className="d-flex align-items-center">
+              <div className="text-heading fs-md fw-medium ps-2 ms-1">
+                {note.judge_name}
+              </div>
+            </footer>
+          </blockquote>
+        ) : (
+          ""
+        );
+      })
+    : "";
+
+  const [show, setShow] = useState(evaluation.isLock ? "lock" : "none");
 
   const handleShow = (type) => {
     if (show !== "lock") show === type ? setShow("none") : setShow(type);
+
+    type === "lock" ? evaluationStore.lockProject(evaluation) : console.log("");
   };
 
   return (
@@ -76,7 +95,7 @@ const ReportDetial = ({ project, teamId, semester }) => {
                 style={{ marginRight: "10px" }}
                 onClick={() => {
                   handleShow("share");
-                  evaluationStore.getLink(project);
+                  evaluationStore.getLink(semester, project);
                   navigator.clipboard.writeText(evaluation.id);
                 }}
                 data-bs-toggle="modal"
@@ -157,7 +176,21 @@ const ReportDetial = ({ project, teamId, semester }) => {
           </div>
 
           {/* TABLE END */}
+
           <h6 style={{ textAlign: "right" }}>Total: {data.total} %</h6>
+          {notes && (
+            <div
+              style={{
+                border: "1px solid",
+                borderRadius: "12px",
+                padding: "3%",
+              }}
+            >
+              <h3 style={{ textAlign: "center" }}>Notes:</h3>
+              <hr />
+              {notes}
+            </div>
+          )}
         </div>
       </div>
     </section>
